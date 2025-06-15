@@ -1,9 +1,9 @@
 import vosk
 import pyaudio
 import json
-import os
+import os    
 
-model_path = r"model\vosk-model-small-en-us-0.15"
+model_path = r"model\vosk-model-small-en-us-0.15"   
 
 
 if not os.path.exists(model_path):
@@ -16,8 +16,8 @@ rec = vosk.KaldiRecognizer(model, 16000)
 p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192)
 stream.start_stream()
-
 print("Listening...")
+
 try:
     while True:
         data = stream.read(4096, exception_on_overflow=False)
